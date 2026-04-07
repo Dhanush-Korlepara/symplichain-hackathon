@@ -13,28 +13,13 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          node-version: '18'
+          python-version: '3.10'
 
-      - name: Install Frontend Dependencies
-        run: |
-          cd frontend
-          npm install
-
-      - name: Build Frontend
-        run: |
-          cd frontend
-          npm run build
-
-      - name: Upload Frontend to S3
-        run: |
-          aws s3 sync frontend/build s3://your-production-bucket
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-          AWS_REGION: ap-south-1
+      - name: Skip Frontend
+        run: echo "No frontend required for this setup"
 
       - name: SSH into EC2 and Deploy Backend
         uses: appleboy/ssh-action@v0.1.6
@@ -50,4 +35,3 @@ jobs:
             python manage.py migrate
             sudo systemctl restart gunicorn
             sudo systemctl restart celery
-            
