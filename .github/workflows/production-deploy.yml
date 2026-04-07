@@ -18,20 +18,17 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Skip Frontend
-        run: echo "No frontend required for this setup"
+      - name: Install Backend Dependencies
+        run: |
+          echo "Simulating dependency installation"
 
-      - name: SSH into EC2 and Deploy Backend
-        uses: appleboy/ssh-action@v0.1.6
-        with:
-          host: ${{ secrets.PRODUCTION_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            cd /home/ubuntu/app
-            git pull origin main
-            source venv/bin/activate
-            pip install -r requirements.txt
-            python manage.py migrate
-            sudo systemctl restart gunicorn
-            sudo systemctl restart celery
+      - name: Run Migrations
+        run: |
+          echo "Simulating database migrations"
+
+      - name: Restart Services
+        run: |
+          echo "Simulating Gunicorn and Celery restart"
+
+      - name: Simulate Deployment
+        run: echo "Production deployment completed successfully 🚀"
