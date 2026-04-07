@@ -33,3 +33,29 @@ The goal of this assignment was to design scalable systems, build deployment pip
 
 ## ⚙️ CI/CD Workflows
 Located in:
+.github/workflows/
+
+
+- `staging-deploy.yml` → Deploys to staging environment  
+- `production-deploy.yml` → Deploys to production environment  
+
+---
+
+## 📄 Documentation
+Full detailed explanation is available in the PDF submission.
+
+---
+
+## 🎯 Key Highlights
+- Used **Celery rate limiting** to enforce API constraints  
+- Implemented **round-robin fairness strategy**  
+- Applied **exponential backoff retry mechanism**  
+- Designed **low-friction mobile interaction model**  
+- Followed **systematic debugging flow**  
+
+---
+
+## 🙌 Note
+This solution focuses on **clear reasoning, simplicity, and practical design decisions** rather than over-engineering.
+
+---
